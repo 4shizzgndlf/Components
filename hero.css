@@ -1,0 +1,209 @@
+/* GRUNDLÆGGENDE OPSÆTNING */
+:root {
+    --morkgron:  #0f1f15;
+    --gron:      #1a3a2a;
+    --lime:      #7db83a;
+    --creme:     #f5f0e8;
+    --orange:    #e87c2f;
+    --hvid:      #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--morkgron);
+    color: var(--creme);
+    overflow-x: hidden;
+}
+
+/* HERO */
+#hjem {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-baggrund {
+    position: absolute;
+    inset: 0;
+    background-image: url('image5.jpeg');
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.15);
+    will-change: transform;
+}
+
+/* Mørkt lag henover billedet */
+.hero-baggrund::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+            to bottom,
+            rgba(10, 20, 12, 0.45) 0%,
+            rgba(10, 20, 12, 0.25) 40%,
+            rgba(10, 20, 12, 0.92) 100%
+    );
+}
+
+.hero-indhold {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+    padding: 0 1.5rem;
+    width: 100%;
+}
+
+.hero-tag {
+    display: inline-block;
+    background: rgba(125, 184, 58, 0.18);
+    border: 1px solid rgba(125, 184, 58, 0.5);
+    color: var(--lime);
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.35rem 1rem;
+    border-radius: 100px;
+    margin-bottom: 1.25rem;
+    opacity: 0;
+    animation: fadeOp 0.8s 0.3s forwards;
+}
+
+.hero-titel {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 7vw, 6.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--hvid);
+    opacity: 0;
+    animation: fadeOp 0.9s 0.5s forwards;
+}
+
+.hero-titel span {
+    color: var(--lime);
+}
+
+.hero-tekst {
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    font-weight: 300;
+    color: rgba(245, 240, 232, 0.8);
+    max-width: 560px;
+    margin: 1.25rem auto 0;
+    line-height: 1.65;
+    opacity: 0;
+    animation: fadeOp 0.9s 0.7s forwards;
+}
+
+.hero-knapper {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    padding: 0 1rem;
+    opacity: 0;
+    animation: fadeOp 0.9s 0.9s forwards;
+}
+
+.knap-primaer {
+    background: var(--lime);
+    color: var(--morkgron);
+    padding: 0.75rem 1.75rem;
+    border-radius: 100px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.knap-primaer:hover {
+    background: #8ecf44;
+    transform: translateY(-2px);
+}
+
+.knap-outline {
+    border: 1px solid rgba(245, 240, 232, 0.4);
+    color: var(--creme);
+    padding: 0.75rem 1.75rem;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.knap-outline:hover {
+    border-color: var(--lime);
+    color: var(--lime);
+    transform: translateY(-2px);
+}
+
+.scroll-pil {
+    position: absolute;
+    bottom: 2rem;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    animation: fadeOp 1s 1.5s forwards;
+}
+
+.scroll-pil span {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.45);
+}
+
+.scroll-linje {
+    width: 1px;
+    height: 35px;
+    background: linear-gradient(to bottom, rgba(125, 184, 58, 0.8), transparent);
+    animation: pulsér 1.5s 2s infinite;
+}
+
+/* SCROLL REVEAL ANIMATION */
+.vis-ved-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.85s ease, transform 0.85s ease;
+}
+
+.vis-ved-scroll.synlig {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.forsinkelse-1 { transition-delay: 0.1s; }
+.forsinkelse-2 { transition-delay: 0.22s; }
+.forsinkelse-3 { transition-delay: 0.36s; }
+
+
+/* KEYFRAME ANIMATIONER */
+
+@keyframes fadeOp {
+    from { opacity: 0; transform: translateY(26px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulsér {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.3; }
+}

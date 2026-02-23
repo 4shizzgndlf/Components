@@ -1,0 +1,74 @@
+/* GRUNDLÆGGENDE OPSÆTNING */
+:root {
+    --morkgron:  #0f1f15;
+    --gron:      #1a3a2a;
+    --lime:      #7db83a;
+    --creme:     #f5f0e8;
+    --orange:    #e87c2f;
+    --hvid:      #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--morkgron);
+    color: var(--creme);
+    overflow-x: hidden;
+}
+
+/* Footer */
+footer {
+    background: #060f09;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    border-top: 1px solid rgba(125, 184, 58, 0.07);
+    text-align: center;
+}
+
+@media (min-width: 700px) {
+    footer {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 2.5rem 4rem;
+    }
+}
+
+.footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 1rem;
+    color: var(--lime);
+}
+
+.footer-tekst {
+    font-size: 0.74rem;
+    color: rgba(245, 240, 232, 0.28);
+}
+
+.footer-links {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.footer-links a {
+    font-size: 0.74rem;
+    color: rgba(245, 240, 232, 0.35);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: var(--lime);
+}
